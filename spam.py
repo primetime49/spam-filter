@@ -4,7 +4,7 @@ from KNN import KNN
 from SVM import SVM
 import numpy as np
 
-filename = "spambase.data"
+filename = "dataset/spambase.data"
 file = open(filename, "r")
 dataset = np.loadtxt(file, delimiter = ",")
 
