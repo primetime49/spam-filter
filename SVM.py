@@ -9,14 +9,14 @@ class SVM:
         self.dataset = dataset
 
     def tfidf(self, X):
-        tf = X
-        ndoc = X.shape[0]
-        idf = np.log10(ndoc/(X != 0).sum(0))
-        return tf*idf
+        n = X.shape[0]
+        idf = np.log10(n/(X != 0).sum(0))
+        return X*idf # X is tf
 
     def transform(self, X):
-        norms = np.sqrt(((X+1e-100)**2).sum(axis=1, keepdims=True))
-        res = np.where(norms > 0.0, X / norms, 0.)
+        # squared, and add small integers to prevent ZeroDivisionError
+        sq = np.sqrt(((X+1e-100)**2).sum(axis=1, keepdims=True))
+        res = np.where(sq > 0.0, X / sq, 0.)
         return res
     
     def perform(self, k, kernel, degree=3, transform_kernels=False):

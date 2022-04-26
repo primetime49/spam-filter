@@ -38,17 +38,17 @@ class NaiveBayes:
 
         return summaries
 
-    def mean(self, values):
-        return sum(values) / float(len(values))
+    def mean(self, x):
+        return sum(x) / float(len(x))
 
-    def var(self, values):
-        average = self.mean(values)
-        variance = sum([(x - average) ** 2 for x in values]) / float(len(values) - 1)
+    def var(self, x):
+        mean = self.mean(x)
+        var = sum([(x - mean) ** 2 for x in x]) / float(len(x) - 1)
         # to prevent ZeroDivisionError
-        if variance == 0:
+        if var == 0:
             return 1
         else:
-            return variance
+            return var
 
     # calculate probabilities of an email belonging to spam or ham
     def calculate_prob(self, data, email, X_train, y_train):
