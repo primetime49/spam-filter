@@ -1,5 +1,5 @@
 # spam-filter
-Prof. Torsello's AI Assignment 2
+AI Assignment 2
 
 Need Python 3
 
